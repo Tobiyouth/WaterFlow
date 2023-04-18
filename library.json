@@ -1,0 +1,17 @@
+{
+    "name": "WaterFlow",
+    "version": "1.0.0",
+    "keywords": "sensor, arduino",
+    "description": "Water Flow Rate, Water Volume",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Tobiyouth/WaterFlow.git"
+    },
+    "authors": [{
+      "name": "Tobiyouth",
+      "email": "ljtian516521@qq.com",
+      "maintainer": true
+    }],
+    "frameworks": ["arduino"],
+    "platforms": ["*"]
+  }
