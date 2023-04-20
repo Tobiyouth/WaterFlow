@@ -8,8 +8,14 @@ void count() {
   waterFlow.pulseCount();
 }
 
+//Make a sound when starting or stopping.
+void buzz(){
+   tone(3, 800, 500);
+}
+
 void setup() {
   waterFlow.begin(count);
+  waterFlow.setListeners(buzz, buzz);
 
   Serial.begin(9600);
 }

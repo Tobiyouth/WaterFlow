@@ -16,6 +16,8 @@ private:
   long _timeBefore = 0;
   bool flowing = false;
   void (*_countFun)(void) ;
+  void (*_start)(void) ;
+  void (*_stop)(void) ;
 
 public:
   WaterFlow(uint8_t pin ,uint8_t constant);
@@ -27,6 +29,7 @@ public:
   long getVolume();
   bool isFlowing();
   void clearVolume();
+  void setListeners(void (*start)(void), void (*stop)(void));
 };
 
 #endif

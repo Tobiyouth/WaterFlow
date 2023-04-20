@@ -13,6 +13,10 @@ WaterFlow::WaterFlow(uint8_t pin, uint8_t sensorConstant) {
 
 
 void WaterFlow::pulseCount() {
+  if(!flowing && _start){
+    _start();
+  }
+
   this->_pulse++;
   this->flowing = true;
 }
@@ -29,6 +33,10 @@ void WaterFlow::begin(void (*userFunc)(void)) {
 void WaterFlow::read() {
   if ((millis() - _timeBefore) > 1000) {
     if (_pulse == 0) {
+       if(flowing && _stop){
+          _stop();
+        }
+
       flowing = false;
       return;
     }
@@ -77,4 +85,15 @@ bool WaterFlow::isFlowing(){
 
 void WaterFlow::clearVolume(){
   this->_volume = 0;
+}
+
+/**
+ *  Set up start and stop listeners as needed.
+ *
+ *  @param start Called when the sensor is started, nullable.
+ *  @param stop Called when the sensor stops, nullable.
+ */
+void WaterFlow::setListeners(void (*start)(void), void (*stop)(void)){
+  this->_start = start;
+  this->_stop = stop;
 }
